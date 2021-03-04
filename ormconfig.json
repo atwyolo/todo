@@ -1,0 +1,10 @@
+{
+  "type": "mysql",
+  "host": "localhost",
+  "port": 2000,
+  "username": "root",
+  "password": "",
+  "database": "todo",
+  "entities": ["dist/**/*.entity{.ts,.js}"],
+  "synchronize": true
+}
