@@ -10,6 +10,7 @@ import {
 import { UsersService } from './users.service';
 import { UserDto } from './dto/response/user.dto';
 import { DeleteResult, UpdateResult } from 'typeorm';
+import { requestUserDto } from './dto/request/requestUserDto';
 
 @Controller('users')
 export class UsersController {
@@ -26,7 +27,7 @@ export class UsersController {
   }
 
   @Post()
-  createOne(@Body() user: UserDto): UserDto {
+  createOne(@Body() user: requestUserDto): Promise<UserDto> {
     return this.usersService.createOne(user);
   }
 
@@ -38,7 +39,7 @@ export class UsersController {
   @Put(':id')
   updateOne(
     @Param('id') id: number,
-    @Body() user: UserDto,
+    @Body() user: requestUserDto,
   ): Promise<UpdateResult> {
     return this.usersService.updateOne(id, user);
   }
